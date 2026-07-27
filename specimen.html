@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambergris — specimen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;600&display=swap" rel="stylesheet">
+<style>
+/* Ambergris v0.2.0
+   Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.
+   - Accent marks interaction only: links, current item, selection, accent rules. Never severity, never decoration.
+   - Status is achromatic. Severity is carried by border weight, edge style and fill density, plus an icon and explicit copy.
+   - The data sweep never appears in interface chrome, and the interface accent never appears in a chart.
+   Generated from tokens.json. Do not edit by hand. */
+
+:root {
+  /* grey ramp, hue 254 */
+  --am-grey-000: #FAFBFD;
+  --am-grey-050: #F3F5F7;
+  --am-grey-100: #EAEDEF;
+  --am-grey-200: #DCDFE3;
+  --am-grey-300: #C8CBD0;
+  --am-grey-400: #AEB2B7;
+  --am-grey-500: #8D9298;
+  --am-grey-600: #72777D;
+  --am-grey-700: #5C6168;
+  --am-grey-800: #42484E;
+  --am-grey-900: #2B3037;
+  --am-grey-950: #1A1F26;
+  --am-grey-1000: #0C1117;
+
+  /* accent ramp, hue 190. interaction only */
+  --am-accent-050: #E7F8F6;
+  --am-accent-100: #D1EFEC;
+  --am-accent-200: #AEE0DC;
+  --am-accent-300: #86CDC8;
+  --am-accent-400: #5BB6B1;
+  --am-accent-500: #2F9F99;
+  --am-accent-600: #1E807B;
+  --am-accent-700: #1B6864;
+  --am-accent-800: #164F4C;
+  --am-accent-900: #0E3937;
+
+  /* overlays */
+  --am-ink-03: rgb(12 17 23 / 0.03);
+  --am-ink-06: rgb(12 17 23 / 0.06);
+  --am-ink-10: rgb(12 17 23 / 0.10);
+  --am-ink-16: rgb(12 17 23 / 0.16);
+  --am-ink-28: rgb(12 17 23 / 0.28);
+  --am-ink-56: rgb(12 17 23 / 0.56);
+  --am-ink-72: rgb(12 17 23 / 0.72);
+  --am-paper-04: rgb(250 251 253 / 0.04);
+  --am-paper-08: rgb(250 251 253 / 0.08);
+  --am-paper-12: rgb(250 251 253 / 0.12);
+  --am-paper-20: rgb(250 251 253 / 0.20);
+  --am-paper-36: rgb(250 251 253 / 0.36);
+  --am-paper-64: rgb(250 251 253 / 0.64);
+  --am-accent-08: rgb(47 159 153 / 0.08);
+  --am-accent-14: rgb(47 159 153 / 0.14);
+  --am-accent-24: rgb(47 159 153 / 0.24);
+
+  /* sequential data scales. never interface chrome */
+  --am-sequence-on-light-1: #2EA094;
+  --am-sequence-on-light-2: #0587A4;
+  --am-sequence-on-light-3: #236AAF;
+  --am-sequence-on-light-4: #304BB0;
+  --am-sequence-on-light-5: #3428AA;
+  --am-sequence-on-dark-1: #13998D;
+  --am-sequence-on-dark-2: #2BA6C6;
+  --am-sequence-on-dark-3: #6FAEF3;
+  --am-sequence-on-dark-4: #A0BAFE;
+  --am-sequence-on-dark-5: #C3CCFE;
+
+  /* structure */
+  --am-border-hair: 1px;
+  --am-border-thin: 1.5px;
+  --am-border-thick: 3px;
+  --am-radius-none: 0;
+  --am-radius-sm: 3px;
+  --am-radius-md: 6px;
+  --am-radius-lg: 10px;
+  --am-radius-full: 999px;
+  --am-focus-width: 2px;
+  --am-focus-offset: 2px;
+
+  /* elevation */
+  --am-shadow-0: none;
+  --am-shadow-1: 0 1px 2px rgb(12 17 23 / 0.06);
+  --am-shadow-2: 0 1px 2px rgb(12 17 23 / 0.06), 0 4px 8px -2px rgb(12 17 23 / 0.06);
+  --am-shadow-3: 0 2px 4px rgb(12 17 23 / 0.06), 0 12px 24px -6px rgb(12 17 23 / 0.10);
+  --am-shadow-inset: inset 0 1px 0 rgb(250 251 253 / 0.64);
+
+  /* status: weight, edge and fill carry severity. never hue */
+  --am-status-neutral-weight: 1px;
+  --am-status-neutral-edge: solid;
+  --am-status-neutral-fill: rgb(12 17 23 / 0.03);
+  --am-status-neutral-accent: #8D9298;
+  --am-status-success-weight: 1.5px;
+  --am-status-success-edge: solid;
+  --am-status-success-fill: rgb(12 17 23 / 0.03);
+  --am-status-success-accent: #5C6168;
+  --am-status-warning-weight: 1.5px;
+  --am-status-warning-edge: dashed;
+  --am-status-warning-fill: rgb(12 17 23 / 0.06);
+  --am-status-warning-accent: #42484E;
+  --am-status-critical-weight: 3px;
+  --am-status-critical-edge: solid;
+  --am-status-critical-fill: rgb(12 17 23 / 0.10);
+  --am-status-critical-accent: #0C1117;
+}
+
+:root, [data-theme="light"] {
+  --am-ground: #F3F5F7;
+  --am-surface: #FAFBFD;
+  --am-surface-sunken: #EAEDEF;
+  --am-surface-raised: #FAFBFD;
+  --am-surface-hover: rgb(12 17 23 / 0.03);
+  --am-surface-active: rgb(12 17 23 / 0.06);
+  --am-surface-inverse: #0C1117;
+  --am-text-primary: #1A1F26;
+  --am-text-secondary: #5C6168;
+  --am-text-tertiary: #72777D;
+  --am-text-disabled: #AEB2B7;
+  --am-text-inverse: #FAFBFD;
+  --am-text-on-fill: #FAFBFD;
+  --am-rule-faint: #DCDFE3;
+  --am-rule: #C8CBD0;
+  --am-border: #8D9298;
+  --am-border-strong: #42484E;
+  --am-fill-solid: #0C1117;
+  --am-fill-solid-hover: #2B3037;
+  --am-fill-muted: #EAEDEF;
+  --am-fill-muted-hover: #DCDFE3;
+  --am-link: #1E807B;
+  --am-link-hover: #1B6864;
+  --am-accent-line: #2F9F99;
+  --am-accent-surface: #E7F8F6;
+  --am-accent-surface-hover: #D1EFEC;
+  --am-accent-on-surface: #1B6864;
+  --am-selection-fill: rgb(47 159 153 / 0.24);
+  --am-selection-text: #1A1F26;
+  --am-scrim: rgb(12 17 23 / 0.56);
+  --am-focus-ring: #0C1117;
+  --am-focus-halo: #FAFBFD;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --am-ground: #0C1117;
+  --am-surface: #1A1F26;
+  --am-surface-sunken: #0C1117;
+  --am-surface-raised: #2B3037;
+  --am-surface-hover: rgb(250 251 253 / 0.04);
+  --am-surface-active: rgb(250 251 253 / 0.08);
+  --am-surface-inverse: #FAFBFD;
+  --am-text-primary: #EAEDEF;
+  --am-text-secondary: #AEB2B7;
+  --am-text-tertiary: #8D9298;
+  --am-text-disabled: #5C6168;
+  --am-text-inverse: #0C1117;
+  --am-text-on-fill: #0C1117;
+  --am-rule-faint: #2B3037;
+  --am-rule: #42484E;
+  --am-border: #72777D;
+  --am-border-strong: #C8CBD0;
+  --am-fill-solid: #EAEDEF;
+  --am-fill-solid-hover: #FAFBFD;
+  --am-fill-muted: #2B3037;
+  --am-fill-muted-hover: #42484E;
+  --am-link: #5BB6B1;
+  --am-link-hover: #86CDC8;
+  --am-accent-line: #2F9F99;
+  --am-accent-surface: #0E3937;
+  --am-accent-surface-hover: #164F4C;
+  --am-accent-on-surface: #86CDC8;
+  --am-selection-fill: rgb(47 159 153 / 0.24);
+  --am-selection-text: #FAFBFD;
+  --am-scrim: rgb(12 17 23 / 0.72);
+  --am-focus-ring: #FAFBFD;
+  --am-focus-halo: #0C1117;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --am-ground: #0C1117;
+    --am-surface: #1A1F26;
+    --am-surface-sunken: #0C1117;
+    --am-surface-raised: #2B3037;
+    --am-surface-hover: rgb(250 251 253 / 0.04);
+    --am-surface-active: rgb(250 251 253 / 0.08);
+    --am-surface-inverse: #FAFBFD;
+    --am-text-primary: #EAEDEF;
+    --am-text-secondary: #AEB2B7;
+    --am-text-tertiary: #8D9298;
+    --am-text-disabled: #5C6168;
+    --am-text-inverse: #0C1117;
+    --am-text-on-fill: #0C1117;
+    --am-rule-faint: #2B3037;
+    --am-rule: #42484E;
+    --am-border: #72777D;
+    --am-border-strong: #C8CBD0;
+    --am-fill-solid: #EAEDEF;
+    --am-fill-solid-hover: #FAFBFD;
+    --am-fill-muted: #2B3037;
+    --am-fill-muted-hover: #42484E;
+    --am-link: #5BB6B1;
+    --am-link-hover: #86CDC8;
+    --am-accent-line: #2F9F99;
+    --am-accent-surface: #0E3937;
+    --am-accent-surface-hover: #164F4C;
+    --am-accent-on-surface: #86CDC8;
+    --am-selection-fill: rgb(47 159 153 / 0.24);
+    --am-selection-text: #FAFBFD;
+    --am-scrim: rgb(12 17 23 / 0.72);
+    --am-focus-ring: #FAFBFD;
+    --am-focus-halo: #0C1117;
+    color-scheme: dark;
+  }
+}
+
+/* wide gamut: same ramps, unclipped */
+@supports (color: oklch(0 0 0)) {
+  :root {
+    --am-grey-000: oklch(0.988 0.0025 254);
+    --am-grey-050: oklch(0.968 0.0035 254);
+    --am-grey-100: oklch(0.944 0.0045 254);
+    --am-grey-200: oklch(0.902 0.0060 254);
+    --am-grey-300: oklch(0.842 0.0075 254);
+    --am-grey-400: oklch(0.762 0.0090 254);
+    --am-grey-500: oklch(0.658 0.0105 254);
+    --am-grey-600: oklch(0.566 0.0115 254);
+    --am-grey-700: oklch(0.492 0.0125 254);
+    --am-grey-800: oklch(0.398 0.0135 254);
+    --am-grey-900: oklch(0.308 0.0140 254);
+    --am-grey-950: oklch(0.238 0.0145 254);
+    --am-grey-1000: oklch(0.176 0.0150 254);
+    --am-accent-050: oklch(0.965 0.018 190);
+    --am-accent-100: oklch(0.930 0.032 190);
+    --am-accent-200: oklch(0.870 0.052 190);
+    --am-accent-300: oklch(0.800 0.072 190);
+    --am-accent-400: oklch(0.720 0.088 190);
+    --am-accent-500: oklch(0.640 0.098 190);
+    --am-accent-600: oklch(0.545 0.086 190);
+    --am-accent-700: oklch(0.470 0.072 190);
+    --am-accent-800: oklch(0.390 0.058 190);
+    --am-accent-900: oklch(0.315 0.046 190);
+    --am-sequence-on-light-1: oklch(0.640 0.100 185.4);
+    --am-sequence-on-light-2: oklch(0.578 0.104 219.6);
+    --am-sequence-on-light-3: oklch(0.516 0.130 251.8);
+    --am-sequence-on-light-4: oklch(0.454 0.165 267.8);
+    --am-sequence-on-light-5: oklch(0.392 0.195 276.4);
+    --am-sequence-on-dark-1: oklch(0.615 0.105 185.4);
+    --am-sequence-on-dark-2: oklch(0.675 0.112 219.6);
+    --am-sequence-on-dark-3: oklch(0.735 0.120 251.8);
+    --am-sequence-on-dark-4: oklch(0.795 0.102 267.8);
+    --am-sequence-on-dark-5: oklch(0.855 0.070 276.4);
+  }
+}
+
+/* primitives */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--am-focus-offset) var(--am-focus-halo),
+              0 0 0 calc(var(--am-focus-offset) + var(--am-focus-width)) var(--am-focus-ring);
+}
+a { color: var(--am-link); text-decoration-color: var(--am-accent-line); text-underline-offset: 0.18em; }
+a:hover { color: var(--am-link-hover); text-decoration-color: currentColor; }
+hr, .am-rule { border: 0; border-top: var(--am-border-hair) solid var(--am-rule); }
+::selection { background: var(--am-selection-fill); color: var(--am-selection-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}
+
+</style>
+<style>
+  :root {
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, "Cascadia Mono", monospace;
+    --gutter: clamp(1.25rem, 4vw, 3.5rem);
+    --measure: 62ch;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--am-ground);
+    color: var(--am-text-primary);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    font-feature-settings: "ss01", "cv05";
+  }
+
+  /* ---- structural language of the page -------------------------------- */
+  .band { border-top: var(--am-border-hair) solid var(--am-rule); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: clamp(2.75rem, 6vw, 4.5rem) 0; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--am-text-tertiary);
+    margin: 0 0 0.35rem;
+  }
+  h2 {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem;
+  }
+  .note {
+    max-width: var(--measure);
+    color: var(--am-text-secondary);
+    margin: 0 0 2rem;
+  }
+  .note code { font-family: var(--mono); font-size: 0.9em; color: var(--am-text-primary); }
+
+  /* ---- masthead ------------------------------------------------------- */
+  header { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
+  .mast {
+    display: flex; flex-wrap: wrap; gap: 2rem 3rem;
+    align-items: flex-end; justify-content: space-between;
+  }
+  .mast h1 {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    margin: 0;
+  }
+  .mast h1 span { color: var(--am-text-tertiary); }
+  .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--am-text-secondary);
+    display: grid; grid-template-columns: auto auto; gap: 0.1rem 1.25rem;
+  }
+  .meta b { font-weight: 500; color: var(--am-text-primary); }
+
+  button.toggle {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--am-surface); color: var(--am-text-primary);
+    border: var(--am-border-hair) solid var(--am-border);
+    border-radius: var(--am-radius-full);
+    padding: 0.5rem 1rem; cursor: pointer;
+  }
+  button.toggle:hover { background: var(--am-fill-muted); }
+
+  /* ---- the ramp, at reading size -------------------------------------- */
+  .ramp { border: var(--am-border-hair) solid var(--am-rule); border-radius: var(--am-radius-md); overflow: hidden; }
+  .step {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.15rem;
+    font-family: var(--mono); font-size: 12px;
+  }
+  .step .name { font-weight: 600; letter-spacing: 0.02em; }
+  .step .val { opacity: 0.72; }
+  .step .ratios { text-align: right; font-variant-numeric: tabular-nums; opacity: 0.72; }
+  @media (max-width: 640px) {
+    .step { grid-template-columns: 4.5rem 1fr; }
+    .step .ratios { grid-column: 2; text-align: left; }
+  }
+
+  /* ---- contrast matrix ------------------------------------------------ */
+  .matrix-scroll { overflow-x: auto; }
+  table.matrix { border-collapse: collapse; font-family: var(--mono); font-size: 11px; font-variant-numeric: tabular-nums; }
+  table.matrix th, table.matrix td {
+    border: var(--am-border-hair) solid var(--am-rule-faint);
+    padding: 0.4rem 0.45rem; text-align: right; min-width: 3.1rem;
+  }
+  table.matrix th { color: var(--am-text-tertiary); font-weight: 500; }
+  table.matrix th.row { text-align: left; position: sticky; left: 0; background: var(--am-ground); }
+  td.pass-aaa { color: var(--am-text-primary); font-weight: 600; }
+  td.pass-aa  { color: var(--am-text-secondary); }
+  td.pass-ui  { color: var(--am-text-tertiary); }
+  td.fail     { color: var(--am-text-disabled); text-decoration: line-through; }
+  .legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-family: var(--mono); font-size: 11px; margin-top: 1rem; color: var(--am-text-tertiary); }
+
+  /* ---- surfaces in context -------------------------------------------- */
+  .app {
+    background: var(--am-surface);
+    border: var(--am-border-hair) solid var(--am-rule);
+    border-radius: var(--am-radius-lg);
+    box-shadow: var(--am-shadow-2);
+    overflow: hidden;
+  }
+  .app-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.9rem 1.25rem;
+    background: var(--am-surface-sunken);
+    border-bottom: var(--am-border-hair) solid var(--am-rule);
+  }
+  .app-bar h3 { margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; }
+  .app-bar .count { font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); }
+
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 0.75rem 1.5rem;
+    align-items: center;
+    padding: 0.95rem 1.25rem;
+    border-bottom: var(--am-border-hair) solid var(--am-rule-faint);
+    cursor: default;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--am-surface-hover); }
+  .row[aria-selected="true"] { background: var(--am-surface-selected); }
+  .row .title { font-weight: 450; }
+  .row .sub { font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); margin-top: 0.15rem; }
+
+  /* ---- status: weight, edge, fill. never hue -------------------------- */
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em;
+    padding: 0.25rem 0.6rem 0.25rem 0.5rem;
+    border-radius: var(--am-radius-sm);
+    white-space: nowrap;
+  }
+  .chip svg { flex: none; }
+  .chip[data-status="neutral"]  { border: var(--am-status-neutral-weight)  var(--am-status-neutral-edge)  var(--am-status-neutral-accent);  background: var(--am-status-neutral-fill);  color: var(--am-text-secondary); }
+  .chip[data-status="success"]  { border: var(--am-status-success-weight)  var(--am-status-success-edge)  var(--am-status-success-accent);  background: var(--am-status-success-fill);  color: var(--am-text-secondary); }
+  .chip[data-status="warning"]  { border: var(--am-status-warning-weight)  var(--am-status-warning-edge)  var(--am-status-warning-accent);  background: var(--am-status-warning-fill);  color: var(--am-text-primary); }
+  .chip[data-status="critical"] { border: var(--am-status-critical-weight) var(--am-status-critical-edge) var(--am-status-critical-accent); background: var(--am-status-critical-fill); color: var(--am-text-primary); font-weight: 500; }
+
+  .ladder { display: grid; gap: 0; border: var(--am-border-hair) solid var(--am-rule); border-radius: var(--am-radius-md); overflow: hidden; }
+  .rung {
+    display: grid; grid-template-columns: 11rem 1fr; gap: 1.25rem;
+    padding: 1.15rem 1.25rem;
+    border-bottom: var(--am-border-hair) solid var(--am-rule-faint);
+    background: var(--am-surface);
+  }
+  .rung:last-child { border-bottom: 0; }
+  .rung .channels { font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); margin-top: 0.55rem; }
+  .rung .channels b { font-weight: 500; color: var(--am-text-secondary); }
+  .rung p { margin: 0; max-width: 48ch; color: var(--am-text-secondary); }
+  .rung p strong { font-weight: 600; color: var(--am-text-primary); }
+  @media (max-width: 700px) { .rung { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+  /* ---- type ----------------------------------------------------------- */
+  .type-spec > * { margin: 0 0 0.85rem; max-width: var(--measure); }
+  .t-display { font-family: var(--mono); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; letter-spacing: -0.035em; line-height: 1.1; }
+  .t-lead { font-size: 1.15rem; line-height: 1.5; color: var(--am-text-secondary); }
+  .t-body { color: var(--am-text-primary); }
+  .t-muted { color: var(--am-text-secondary); }
+  .t-caption { font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); letter-spacing: 0.04em; }
+  .t-disabled { color: var(--am-text-disabled); }
+
+  /* ---- controls ------------------------------------------------------- */
+  .controls { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+  .btn {
+    font-family: var(--sans); font-size: 14px; font-weight: 450;
+    padding: 0.55rem 1.1rem; border-radius: var(--am-radius-md);
+    cursor: pointer; border: var(--am-border-hair) solid transparent;
+  }
+  .btn-solid { background: var(--am-fill-solid); color: var(--am-text-on-fill); }
+  .btn-solid:hover { background: var(--am-fill-solid-hover); }
+  .btn-outline { background: transparent; color: var(--am-text-primary); border-color: var(--am-border); }
+  .btn-outline:hover { background: var(--am-surface-hover); }
+  .btn-quiet { background: transparent; color: var(--am-text-secondary); }
+  .btn-quiet:hover { background: var(--am-surface-hover); color: var(--am-text-primary); }
+  .btn[disabled] { color: var(--am-text-disabled); border-color: var(--am-rule); background: transparent; cursor: not-allowed; }
+
+  .field { display: grid; gap: 0.35rem; max-width: 22rem; }
+  .field label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-text-tertiary); }
+  .field input {
+    font: inherit; padding: 0.55rem 0.7rem;
+    background: var(--am-surface); color: var(--am-text-primary);
+    border: var(--am-border-hair) solid var(--am-border);
+    border-radius: var(--am-radius-md);
+  }
+  .field input::placeholder { color: var(--am-text-disabled); }
+  .field .hint { font-size: 12px; color: var(--am-text-secondary); }
+
+  /* ---- elevation ------------------------------------------------------ */
+  .elev { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1.25rem; }
+  .card {
+    background: var(--am-surface-raised);
+    border: var(--am-border-hair) solid var(--am-rule-faint);
+    border-radius: var(--am-radius-md);
+    padding: 1.5rem 1rem; text-align: center;
+    font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary);
+  }
+
+  /* ---- accent, interaction only --------------------------------------- */
+  .nav { display: flex; gap: 1.75rem; font-family: var(--mono); font-size: 13px; padding-bottom: 0.4rem; }
+  .nav a { text-decoration: none; color: var(--am-text-secondary); padding-bottom: 0.35rem; border-bottom: 2px solid transparent; }
+  .nav a:hover { color: var(--am-text-primary); }
+  .nav a[aria-current="page"] { color: var(--am-link); border-bottom-color: var(--am-accent-line); }
+
+  .prose { max-width: var(--measure); color: var(--am-text-secondary); }
+  .prose a { color: var(--am-link); text-decoration: underline; text-decoration-color: var(--am-accent-line); text-underline-offset: 0.18em; }
+  .prose a:hover { color: var(--am-link-hover); text-decoration-color: currentColor; }
+
+  .callout {
+    border-left: var(--am-border-thick) solid var(--am-accent-line);
+    background: var(--am-accent-surface);
+    padding: 1rem 1.25rem; border-radius: 0 var(--am-radius-md) var(--am-radius-md) 0;
+    max-width: var(--measure);
+  }
+  .callout p { margin: 0; color: var(--am-text-secondary); }
+  .callout .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--am-accent-on-surface); display: block; margin-bottom: 0.35rem; }
+
+  .aramp { display: grid; grid-template-columns: repeat(10, 1fr); border: var(--am-border-hair) solid var(--am-rule); border-radius: var(--am-radius-md); overflow: hidden; }
+  .aramp div { padding: 2.4rem 0.4rem 0.5rem; font-family: var(--mono); font-size: 10px; text-align: center; }
+
+  .misuse { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .misuse > div { border: var(--am-border-hair) solid var(--am-rule); border-radius: var(--am-radius-md); padding: 1.1rem; }
+  .misuse h4 { margin: 0 0 0.6rem; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+  .misuse .yes { color: var(--am-accent-on-surface); }
+  .misuse .no { color: var(--am-text-tertiary); }
+  .misuse p { margin: 0; font-size: 13px; color: var(--am-text-secondary); }
+
+  /* ---- data ------------------------------------------------------------ */
+  .seq { display: grid; grid-template-columns: repeat(5, 1fr); border-radius: var(--am-radius-md); overflow: hidden; }
+  .seq div { padding: 3rem 0.5rem 0.6rem; font-family: var(--mono); font-size: 10px; text-align: center; }
+  .seq-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-text-tertiary); margin: 0 0 0.5rem; }
+  .chart { border: var(--am-border-hair) solid var(--am-rule); border-radius: var(--am-radius-md); padding: 1.25rem; background: var(--am-surface); }
+  .chart figcaption { font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); margin-top: 0.8rem; }
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.25rem; }
+
+  footer { padding: 3rem 0 5rem; font-family: var(--mono); font-size: 11px; color: var(--am-text-tertiary); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    body, .app, .card, .rung, .step { transition: background-color 140ms linear, border-color 140ms linear, color 140ms linear; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="mast">
+    <div>
+      <p class="eyebrow">Near-monochrome design system · living specimen</p>
+      <h1>Ambergris<span>.</span></h1>
+    </div>
+    <div style="display:flex; gap:2rem; align-items:flex-end; flex-wrap:wrap">
+      <div class="meta">
+        <span>version</span><b id="m-version">—</b>
+        <span>grey hue</span><b id="m-hue">—</b>
+        <span>accent hue</span><b id="m-accent">—</b>
+        <span>grey steps</span><b id="m-steps">—</b>
+      </div>
+      <button class="toggle" id="theme-toggle" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</header>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">01 · grey ramp</p>
+  <h2>Thirteen steps, one hue, rising chroma</h2>
+  <p class="note">Chroma climbs from the light end to the dark end rather than holding constant. A flat ramp reads tinted in the highlights and muddy in the shadows. Ratios are measured against <code>grey-000</code> and <code>grey-1000</code>.</p>
+  <div class="ramp" id="ramp"></div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">02 · contrast</p>
+  <h2>The system checking itself</h2>
+  <p class="note">Every pair in the ramp, computed live in your browser from the tokens this page was built with. Struck-through cells fall below 3:1 and must never carry meaning against each other.</p>
+  <div class="matrix-scroll"><table class="matrix" id="matrix"></table></div>
+  <div class="legend">
+    <span class="pass-aaa" style="color:var(--am-text-primary);font-weight:600">7.0+ AAA body</span>
+    <span style="color:var(--am-text-secondary)">4.5+ AA body</span>
+    <span style="color:var(--am-text-tertiary)">3.0+ UI and large text</span>
+    <span style="color:var(--am-text-disabled);text-decoration:line-through">below 3.0</span>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">03 · surfaces</p>
+  <h2>Greys at working size</h2>
+  <p class="note">Ground, surface, sunken and hover, stacked the way they will actually appear. Hover a row.</p>
+  <div class="app">
+    <div class="app-bar">
+      <h3>Submissions · triage queue</h3>
+      <span class="count">4 open</span>
+    </div>
+    <div class="row" aria-selected="true">
+      <div>
+        <div class="title">Deep learning segmentation of thoracic CT in a multicentre cohort</div>
+        <div class="sub">SREP-2026-04817 · assigned 3 days ago</div>
+      </div>
+      <span class="chip" data-status="critical"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.1 1h3.8L11 4.1v3.8L7.9 11H4.1L1 7.9V4.1z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.4v3.1M6 8.4v.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Integrity hold</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="title">Reference verification incomplete for eleven citations</div>
+        <div class="sub">SREP-2026-04802 · awaiting author reply</div>
+      </div>
+      <span class="chip" data-status="warning"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.4 11 10.4H1z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 5v2.2M6 8.7v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Needs review</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="title">Spirometry reference equations in Portuguese adults aged 18 to 45</div>
+        <div class="sub">SREP-2026-04788 · two reports received</div>
+      </div>
+      <span class="chip" data-status="success"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.8 6.2 5.3 7.7 8.3 4.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready to decide</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="title">Benchmarking language models on clinical coding tasks</div>
+        <div class="sub">SREP-2026-04771 · unassigned</div>
+      </div>
+      <span class="chip" data-status="neutral"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="2.4" fill="currentColor"/></svg>New</span>
+    </div>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">04 · status</p>
+  <h2>Severity without hue</h2>
+  <p class="note">Three independent channels carry severity, so no two states share a signature. Squint, print it, or view it in greyscale: the ranking survives all three.</p>
+  <div class="ladder">
+    <div class="rung">
+      <div><span class="chip" data-status="neutral"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="2.4" fill="currentColor"/></svg>Neutral</span>
+        <div class="channels">1px · <b>solid</b> · 3% fill</div></div>
+      <p>Informational only. The lightest border in the set and the only one that never takes a weight above a hairline.</p>
+    </div>
+    <div class="rung">
+      <div><span class="chip" data-status="success"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.8 6.2 5.3 7.7 8.3 4.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Success</span>
+        <div class="channels">1.5px · <b>solid</b> · 3% fill</div></div>
+      <p>Heavier edge than neutral, same quiet fill. Success should be legible without demanding attention, since nothing needs doing.</p>
+    </div>
+    <div class="rung">
+      <div><span class="chip" data-status="warning"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.4 11 10.4H1z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 5v2.2M6 8.7v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Warning</span>
+        <div class="channels">1.5px · <b>dashed</b> · 6% fill</div></div>
+      <p>The only dashed edge in the system. A broken line reads as unresolved even at a glance, which is precisely what a warning means.</p>
+    </div>
+    <div class="rung">
+      <div><span class="chip" data-status="critical"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.1 1h3.8L11 4.1v3.8L7.9 11H4.1L1 7.9V4.1z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.4v3.1M6 8.4v.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Critical</span>
+        <div class="channels">3px · <b>solid</b> · 10% fill</div></div>
+      <p>Double the weight of anything else and the darkest accent on the page. Reserve it for states a person must resolve before continuing.</p>
+    </div>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">05 · accent</p>
+  <h2>One teal, and only for interaction</h2>
+  <p class="note">Hue 190, sixty-four degrees off the greys. It marks what is current, what is a link, and what is selected. It never marks severity, and it never appears as decoration.</p>
+
+  <div class="aramp" id="aramp"></div>
+
+  <div style="display:grid; gap:2rem; margin-top:2.5rem">
+    <div>
+      <p class="seq-label">current item</p>
+      <nav class="nav">
+        <a href="#" aria-current="page">Tokens</a>
+        <a href="#">Components</a>
+        <a href="#">Data</a>
+        <a href="#">Changelog</a>
+      </nav>
+    </div>
+
+    <div>
+      <p class="seq-label">links in running text</p>
+      <p class="prose">Accent underlines sit at <a href="#">accent-500</a> while the text itself is <a href="#">accent-600</a>, which keeps the rule quieter than the word. On hover both move to <a href="#">accent-700</a> and the underline takes the text colour. Select this paragraph to see the selection fill.</p>
+    </div>
+
+    <div>
+      <p class="seq-label">accent surface</p>
+      <div class="callout">
+        <span class="k">Editorial note</span>
+        <p>An accent-tinted surface with a 3px accent rule. This is the heaviest the accent is ever allowed to be in the interface, and it carries no severity meaning.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="misuse">
+    <div>
+      <h4 class="yes">Accent belongs here</h4>
+      <p>Current nav item, links, text selection, the rule on a highlighted block, focus-adjacent affordances that are about where you are.</p>
+    </div>
+    <div>
+      <h4 class="no">Accent stays out</h4>
+      <p>Status chips, primary buttons, chart series, icons that are not links, headings, borders on ordinary cards, anything decorative.</p>
+    </div>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">06 · data</p>
+  <h2>The sweep, confined to charts</h2>
+  <p class="note">Five analogous hues from teal to indigo. Because they sit on one hue path they can only encode order, never category. Two variants exist because the supplied colours are mid-dark and disappear against a dark ground; pick by chart background, not by page theme.</p>
+
+  <div style="display:grid; gap:1.75rem">
+    <div>
+      <p class="seq-label">sequence on light · lightness descends evenly</p>
+      <div class="seq" id="seq-light"></div>
+    </div>
+    <div>
+      <p class="seq-label">sequence on dark · lightness ascends, chroma pulled back</p>
+      <div class="seq" id="seq-dark"></div>
+    </div>
+  </div>
+
+  <div class="chart-grid" style="margin-top:2rem">
+    <figure class="chart" style="margin:0">
+      <svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Stacked area chart using the sequential scale">
+        <g id="chart-areas"></g>
+        <line x1="0" y1="130" x2="320" y2="130" stroke="var(--am-rule)" stroke-width="1"/>
+      </svg>
+      <figcaption>Ordered strata, five levels. Order is the only thing the colour encodes.</figcaption>
+    </figure>
+    <figure class="chart" style="margin:0">
+      <svg viewBox="0 0 320 150" width="100%" role="img" aria-label="Grouped bar chart using the sequential scale">
+        <g id="chart-bars"></g>
+        <line x1="0" y1="130" x2="320" y2="130" stroke="var(--am-rule)" stroke-width="1"/>
+      </svg>
+      <figcaption>Adjacent bars clear 1.2:1, the floor for touching areas.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">07 · type</p>
+  <h2>Six levels of grey, six jobs</h2>
+  <div class="type-spec">
+    <p class="t-display">Call me Ishmael.</p>
+    <p class="t-lead">Lead paragraph, set in text-secondary at 6.03 against surface. Long enough to introduce a section without competing with the display line above it.</p>
+    <p class="t-body">Body text sits at text-primary, 16:1 against surface. In a system with no hue, weight and size do all the work that colour normally does, so the body face has to hold its own at small sizes across long passages.</p>
+    <p class="t-muted">Supporting copy drops to text-secondary. Still passes AA, still comfortable, clearly subordinate.</p>
+    <p class="t-caption">CAPTION AND METADATA · MONO · TEXT-TERTIARY · 3:1 MINIMUM</p>
+    <p class="t-disabled">Disabled text. Deliberately below threshold, because unreadable is the message.</p>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">08 · controls</p>
+  <h2>Focus you cannot lose</h2>
+  <p class="note">Tab through these. The ring is two layers, a halo in the ground followed by a ring in the opposite endpoint, so it stays visible on every surface in the ramp.</p>
+  <div class="controls" style="margin-bottom:2rem">
+    <button class="btn btn-solid">Send decision</button>
+    <button class="btn btn-outline">Request revision</button>
+    <button class="btn btn-quiet">Cancel</button>
+    <button class="btn btn-outline" disabled>Archive</button>
+  </div>
+  <div class="field">
+    <label for="q">Manuscript ID</label>
+    <input id="q" type="text" placeholder="SREP-2026-00000">
+    <span class="hint">Border sits at grey-500, exactly 3.03 against surface.</span>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<section class="wrap">
+  <p class="eyebrow">09 · elevation</p>
+  <h2>Shallow on purpose</h2>
+  <p class="note">Monochrome interfaces read depth through edge contrast, not blur radius. The shadows are cool-tinted and small; the rule tokens carry most of the separation.</p>
+  <div class="elev">
+    <div class="card" style="box-shadow:var(--am-shadow-0)">shadow-0</div>
+    <div class="card" style="box-shadow:var(--am-shadow-1)">shadow-1</div>
+    <div class="card" style="box-shadow:var(--am-shadow-2)">shadow-2</div>
+    <div class="card" style="box-shadow:var(--am-shadow-3)">shadow-3</div>
+  </div>
+</section>
+
+<div class="band"></div>
+
+<footer class="wrap">Generated from tokens.json. Every value on this page resolves to the ramp.</footer>
+
+<script id="ramp-data" type="application/json">{"name":"Ambergris","version":"0.2.0","greyHue":254,"accentHue":190,"ink":"#0C1117","paper":"#FAFBFD","steps":[{"name":"000","hex":"#FAFBFD","oklch":"0.988 0.0025 254","vsLight":1,"vsDark":18.302,"onLight":true},{"name":"050","hex":"#F3F5F7","oklch":"0.968 0.0035 254","vsLight":1.056,"vsDark":17.339,"onLight":true},{"name":"100","hex":"#EAEDEF","oklch":"0.944 0.0045 254","vsLight":1.136,"vsDark":16.115,"onLight":true},{"name":"200","hex":"#DCDFE3","oklch":"0.902 0.0060 254","vsLight":1.291,"vsDark":14.174,"onLight":true},{"name":"300","hex":"#C8CBD0","oklch":"0.842 0.0075 254","vsLight":1.571,"vsDark":11.649,"onLight":true},{"name":"400","hex":"#AEB2B7","oklch":"0.762 0.0090 254","vsLight":2.059,"vsDark":8.89,"onLight":true},{"name":"500","hex":"#8D9298","oklch":"0.658 0.0105 254","vsLight":3.028,"vsDark":6.044,"onLight":true},{"name":"600","hex":"#72777D","oklch":"0.566 0.0115 254","vsLight":4.361,"vsDark":4.196,"onLight":false},{"name":"700","hex":"#5C6168","oklch":"0.492 0.0125 254","vsLight":6.028,"vsDark":3.036,"onLight":false},{"name":"800","hex":"#42484E","oklch":"0.398 0.0135 254","vsLight":8.94,"vsDark":2.047,"onLight":false},{"name":"900","hex":"#2B3037","oklch":"0.308 0.0140 254","vsLight":12.831,"vsDark":1.426,"onLight":false},{"name":"950","hex":"#1A1F26","oklch":"0.238 0.0145 254","vsLight":15.996,"vsDark":1.144,"onLight":false},{"name":"1000","hex":"#0C1117","oklch":"0.176 0.0150 254","vsLight":18.302,"vsDark":1,"onLight":false}],"accent":[{"name":"050","hex":"#E7F8F6","oklch":"0.965 0.018 190","vsLight":1.059,"vsDark":15.108,"onLight":true},{"name":"100","hex":"#D1EFEC","oklch":"0.930 0.032 190","vsLight":1.174,"vsDark":13.62,"onLight":true},{"name":"200","hex":"#AEE0DC","oklch":"0.870 0.052 190","vsLight":1.399,"vsDark":11.433,"onLight":true},{"name":"300","hex":"#86CDC8","oklch":"0.800 0.072 190","vsLight":1.751,"vsDark":9.133,"onLight":true},{"name":"400","hex":"#5BB6B1","oklch":"0.720 0.088 190","vsLight":2.312,"vsDark":6.918,"onLight":true},{"name":"500","hex":"#2F9F99","oklch":"0.640 0.098 190","vsLight":3.101,"vsDark":5.158,"onLight":true},{"name":"600","hex":"#1E807B","oklch":"0.545 0.086 190","vsLight":4.579,"vsDark":3.493,"onLight":false},{"name":"700","hex":"#1B6864","oklch":"0.470 0.072 190","vsLight":6.317,"vsDark":2.532,"onLight":false},{"name":"800","hex":"#164F4C","oklch":"0.390 0.058 190","vsLight":8.987,"vsDark":1.78,"onLight":false},{"name":"900","hex":"#0E3937","oklch":"0.315 0.046 190","vsLight":12.225,"vsDark":1.309,"onLight":false}],"matrix":[[1,1.056,1.136,1.291,1.571,2.059,3.028,4.361,6.028,8.94,12.831,15.996,18.302],[1.056,1,1.076,1.223,1.488,1.95,2.869,4.132,5.711,8.47,12.156,15.155,17.339],[1.136,1.076,1,1.137,1.383,1.813,2.666,3.84,5.307,7.872,11.298,14.085,16.115],[1.291,1.223,1.137,1,1.217,1.594,2.345,3.378,4.668,6.924,9.937,12.388,14.174],[1.571,1.488,1.383,1.217,1,1.31,1.927,2.776,3.836,5.69,8.167,10.181,11.649],[2.059,1.95,1.813,1.594,1.31,1,1.471,2.118,2.928,4.343,6.233,7.77,8.89],[3.028,2.869,2.666,2.345,1.927,1.471,1,1.44,1.99,2.952,4.237,5.282,6.044],[4.361,4.132,3.84,3.378,2.776,2.118,1.44,1,1.382,2.05,2.942,3.668,4.196],[6.028,5.711,5.307,4.668,3.836,2.928,1.99,1.382,1,1.483,2.129,2.654,3.036],[8.94,8.47,7.872,6.924,5.69,4.343,2.952,2.05,1.483,1,1.435,1.789,2.047],[12.831,12.156,11.298,9.937,8.167,6.233,4.237,2.942,2.129,1.435,1,1.247,1.426],[15.996,15.155,14.085,12.388,10.181,7.77,5.282,3.668,2.654,1.789,1.247,1,1.144],[18.302,17.339,16.115,14.174,11.649,8.89,6.044,4.196,3.036,2.047,1.426,1.144,1]],"seqLight":["#2EA094","#0587A4","#236AAF","#304BB0","#3428AA"],"seqDark":["#13998D","#2BA6C6","#6FAEF3","#A0BAFE","#C3CCFE"],"supplied":["#26998E","#26859E","#2664A3","#263FA9","#3426AE"],"huePath":[185.4,219.6,251.8,267.8,276.4]}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById("ramp-data").textContent);
+
+  document.getElementById("m-hue").textContent = D.greyHue;
+  document.getElementById("m-steps").textContent = D.steps.length;
+  document.getElementById("m-accent").textContent = D.accentHue;
+  document.getElementById("m-version").textContent = D.version;
+
+  // ramp bands
+  var ramp = document.getElementById("ramp");
+  D.steps.forEach(function (s) {
+    var el = document.createElement("div");
+    el.className = "step";
+    el.style.background = s.hex;
+    el.style.color = s.onLight ? D.ink : D.paper;
+    el.innerHTML =
+      '<span class="name">grey-' + s.name + '</span>' +
+      '<span class="val">' + s.hex + " &nbsp; " + s.oklch + "</span>" +
+      '<span class="ratios">' + s.vsLight.toFixed(2) + " / " + s.vsDark.toFixed(2) + "</span>";
+    ramp.appendChild(el);
+  });
+
+  // contrast matrix
+  function cls(r) {
+    if (r >= 7) return "pass-aaa";
+    if (r >= 4.5) return "pass-aa";
+    if (r >= 3) return "pass-ui";
+    return "fail";
+  }
+  var t = document.getElementById("matrix");
+  var head = "<tr><th class='row'></th>";
+  D.steps.forEach(function (s) { head += "<th>" + s.name + "</th>"; });
+  t.innerHTML = head + "</tr>";
+  D.steps.forEach(function (a, i) {
+    var tr = "<tr><th class='row'>" + a.name + "</th>";
+    D.steps.forEach(function (b, j) {
+      var r = D.matrix[i][j];
+      tr += "<td class='" + cls(r) + "'>" + (i === j ? "·" : r.toFixed(1)) + "</td>";
+    });
+    t.innerHTML += tr + "</tr>";
+  });
+
+
+  // accent ramp
+  var ar = document.getElementById("aramp");
+  D.accent.forEach(function (a) {
+    var el = document.createElement("div");
+    el.style.background = a.hex;
+    el.style.color = a.onLight ? D.ink : D.paper;
+    el.innerHTML = a.name + "<br>" + a.hex;
+    el.title = "oklch(" + a.oklch + ")  ·  " + a.vsLight.toFixed(2) + " on grey-000  ·  " + a.vsDark.toFixed(2) + " on grey-950";
+    ar.appendChild(el);
+  });
+
+  // sequential scales
+  function paintSeq(id, hexes, onDark) {
+    var box = document.getElementById(id);
+    box.innerHTML = "";
+    box.style.background = onDark ? D.ink : D.paper;
+    hexes.forEach(function (h, i) {
+      var el = document.createElement("div");
+      el.style.background = h;
+      el.style.color = onDark && i > 1 ? D.ink : D.paper;
+      el.innerHTML = (i + 1) + "<br>" + h;
+      box.appendChild(el);
+    });
+  }
+  paintSeq("seq-light", D.seqLight, false);
+  paintSeq("seq-dark", D.seqDark, true);
+
+  // charts, keyed to the surface the chart sits on
+  var series = [
+    [18, 26, 22, 30, 27, 34, 31],
+    [14, 12, 18, 15, 21, 17, 23],
+    [10, 14, 11, 16, 13, 18, 15],
+    [8, 7, 10, 9, 12, 10, 13],
+    [5, 6, 5, 7, 6, 8, 7]
+  ];
+  function paintCharts() {
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    var pal = dark ? D.seqDark : D.seqLight;
+
+    var areas = document.getElementById("chart-areas");
+    var n = series[0].length, step = 320 / (n - 1), base = new Array(n).fill(130);
+    areas.innerHTML = "";
+    series.forEach(function (row, si) {
+      var top = row.map(function (v, i) { return base[i] - v * 1.05; });
+      var d = "M0," + base[0];
+      for (var i = 1; i < n; i++) d += "L" + i * step + "," + base[i];
+      for (var j = n - 1; j >= 0; j--) d += "L" + j * step + "," + top[j];
+      d += "Z";
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      path.setAttribute("fill", pal[si]);
+      areas.appendChild(path);
+      base = top;
+    });
+
+    var bars = document.getElementById("chart-bars");
+    bars.innerHTML = "";
+    for (var g = 0; g < 4; g++) {
+      for (var k = 0; k < 5; k++) {
+        var r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        var h = 30 + ((g * 7 + k * 11) % 60);
+        r.setAttribute("x", g * 80 + k * 14 + 6);
+        r.setAttribute("y", 130 - h);
+        r.setAttribute("width", 13);
+        r.setAttribute("height", h);
+        r.setAttribute("fill", pal[k]);
+        bars.appendChild(r);
+      }
+    }
+  }
+  paintCharts();
+
+  // theme
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  btn.addEventListener("click", function () {
+    var dark = root.getAttribute("data-theme") === "dark";
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+    btn.textContent = dark ? "Dark" : "Light";
+    btn.setAttribute("aria-pressed", String(!dark));
+    paintCharts();
+  });
+})();
+</script>
+</body>
+</html>
