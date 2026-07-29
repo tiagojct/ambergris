@@ -1,5 +1,6 @@
 // Ambergris token build. No dependencies. node build.mjs
 import { readFileSync, writeFileSync } from "node:fs";
+import { emitThemes } from "./themes.mjs";
 
 const T = JSON.parse(readFileSync(new URL("./tokens.json", import.meta.url), "utf8"));
 const P = T.meta.prefix;
@@ -182,3 +183,8 @@ let spec = readFileSync(new URL("./specimen.src.html", import.meta.url), "utf8")
 spec = spec.replace("/* @TOKENS@ */", css).replace("/* @DATA@ */", JSON.stringify(data));
 writeFileSync(new URL("./specimen.html", import.meta.url), spec);
 console.log(`Wrote specimen.html (self-contained, ${(spec.length / 1024).toFixed(0)} kB).`);
+
+// --- application themes --------------------------------------------------
+const themes = emitThemes({ T, resolve, ratio, root: import.meta.url });
+console.log(`Wrote ${themes.length} theme files:`);
+themes.forEach((f) => console.log(`  themes/${f}`));

@@ -1,0 +1,259 @@
+/* Ambergris v0.2.0 for Obsidian
+   Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.
+   - Accent marks interaction only: links, current item, selection, accent rules. Never severity, never decoration.
+   - Status is achromatic. Severity is carried by border weight, edge style and fill density, plus an icon and explicit copy.
+   - The data sweep never appears in interface chrome, and the interface accent never appears in a chart.
+   Generated from tokens.json. Do not edit by hand. */
+
+.theme-light {
+  /* base ramp: 00 is the background end, 100 the text end */
+  --color-base-00: #fafbfd;
+  --color-base-05: #f3f5f7;
+  --color-base-10: #eaedef;
+  --color-base-20: #dcdfe3;
+  --color-base-25: #dcdfe3;
+  --color-base-30: #c8cbd0;
+  --color-base-35: #aeb2b7;
+  --color-base-40: #aeb2b7;
+  --color-base-50: #8d9298;
+  --color-base-60: #72777d;
+  --color-base-70: #5c6168;
+  --color-base-100: #1a1f26;
+
+  /* accent, decomposed the way Obsidian wants it */
+  --accent-h: 177;
+  --accent-s: 62%;
+  --accent-l: 31%;
+
+  /* named hues collapse onto the grey ramp: severity is weight, not colour */
+  --color-red: #0c1117;
+  --color-orange: #42484e;
+  --color-yellow: #42484e;
+  --color-green: #5c6168;
+  --color-cyan: #72777d;
+  --color-blue: #72777d;
+  --color-purple: #5c6168;
+  --color-pink: #5c6168;
+
+  /* surfaces */
+  --background-primary: #fafbfd;
+  --background-primary-alt: #eaedef;
+  --background-secondary: #f3f5f7;
+  --background-secondary-alt: #f3f5f7;
+  --background-modifier-hover: rgb(12 17 23 / 0.03);
+  --background-modifier-active-hover: rgb(12 17 23 / 0.06);
+  --background-modifier-border: #dcdfe3;
+  --background-modifier-border-hover: #c8cbd0;
+  --background-modifier-border-focus: #2f9f99;
+  --background-modifier-error: rgb(12 17 23 / 0.10);
+  --background-modifier-error-hover: rgb(12 17 23 / 0.06);
+  --background-modifier-success: rgb(12 17 23 / 0.03);
+  --background-modifier-message: #fafbfd;
+  --background-modifier-form-field: #fafbfd;
+
+  /* interaction: the only place the accent is allowed */
+  --interactive-normal: #f3f5f7;
+  --interactive-hover: rgb(12 17 23 / 0.03);
+  --interactive-accent: #1e807b;
+  --interactive-accent-hover: #1b6864;
+  --caret-color: #1e807b;
+  --text-selection: rgb(47 159 153 / 0.24);
+  --text-highlight-bg: rgb(47 159 153 / 0.14);
+
+  /* text */
+  --text-normal: #1a1f26;
+  --text-muted: #5c6168;
+  --text-faint: #72777d;
+  --text-on-accent: #fafbfd;
+  --text-on-accent-inverted: #1a1f26;
+  --text-accent: #1e807b;
+  --text-accent-hover: #1b6864;
+  --text-error: #0c1117;
+  --text-warning: #42484e;
+  --text-success: #5c6168;
+
+  /* heading level is a depth, so it reads the ordinal ladder monotonically */
+  --h1-color: #0c1117;
+  --h2-color: #1a1f26;
+  --h3-color: #2b3037;
+  --h4-color: #42484e;
+  --h5-color: #5c6168;
+  --h6-color: #72777d;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+  --heading-formatting: #aeb2b7;
+
+  /* callouts: fourteen named types collapse onto four severities, per rule 2.
+     Obsidian wants a bare RGB triplet here, not a colour function. */
+  --callout-error: 12, 17, 23;
+  --callout-bug: 12, 17, 23;
+  --callout-fail: 12, 17, 23;
+  --callout-warning: 66, 72, 78;
+  --callout-important: 66, 72, 78;
+  --callout-success: 92, 97, 104;
+  --callout-tip: 92, 97, 104;
+  --callout-todo: 92, 97, 104;
+  --callout-info: 114, 119, 125;
+  --callout-question: 114, 119, 125;
+  --callout-summary: 114, 119, 125;
+  --callout-example: 92, 97, 104;
+  --callout-quote: 92, 97, 104;
+  --callout-default: 92, 97, 104;
+
+  /* graph: node type is categorical, and the sweep is sequential only,
+     so nodes stay on the ramp. Only the focused node is interaction. */
+  --graph-text: #1a1f26;
+  --graph-line: #dcdfe3;
+  --graph-node: #5c6168;
+  --graph-node-unresolved: #aeb2b7;
+  --graph-node-focused: #1e807b;
+  --graph-node-tag: #72777d;
+  --graph-node-attachment: #aeb2b7;
+
+  /* code: achromatic, category carried by luminance and slope */
+  --code-background: #eaedef;
+  --code-normal: #1a1f26;
+  --code-comment: #8d9298;
+  --code-function: #0c1117;
+  --code-important: #0c1117;
+  --code-keyword: #0c1117;
+  --code-operator: #5c6168;
+  --code-property: #2b3037;
+  --code-punctuation: #72777d;
+  --code-string: #5c6168;
+  --code-tag: #0c1117;
+  --code-value: #42484e;
+}
+
+.theme-dark {
+  /* base ramp: 00 is the background end, 100 the text end */
+  --color-base-00: #0c1117;
+  --color-base-05: #1a1f26;
+  --color-base-10: #1a1f26;
+  --color-base-20: #2b3037;
+  --color-base-25: #2b3037;
+  --color-base-30: #42484e;
+  --color-base-35: #42484e;
+  --color-base-40: #5c6168;
+  --color-base-50: #72777d;
+  --color-base-60: #8d9298;
+  --color-base-70: #aeb2b7;
+  --color-base-100: #eaedef;
+
+  /* accent, decomposed the way Obsidian wants it */
+  --accent-h: 177;
+  --accent-s: 38%;
+  --accent-l: 54%;
+
+  /* named hues collapse onto the grey ramp: severity is weight, not colour */
+  --color-red: #fafbfd;
+  --color-orange: #dcdfe3;
+  --color-yellow: #dcdfe3;
+  --color-green: #c8cbd0;
+  --color-cyan: #8d9298;
+  --color-blue: #8d9298;
+  --color-purple: #aeb2b7;
+  --color-pink: #aeb2b7;
+
+  /* surfaces */
+  --background-primary: #0c1117;
+  --background-primary-alt: #0c1117;
+  --background-secondary: #1a1f26;
+  --background-secondary-alt: #1a1f26;
+  --background-modifier-hover: rgb(250 251 253 / 0.04);
+  --background-modifier-active-hover: rgb(250 251 253 / 0.08);
+  --background-modifier-border: #2b3037;
+  --background-modifier-border-hover: #42484e;
+  --background-modifier-border-focus: #2f9f99;
+  --background-modifier-error: rgb(250 251 253 / 0.12);
+  --background-modifier-error-hover: rgb(250 251 253 / 0.08);
+  --background-modifier-success: rgb(250 251 253 / 0.04);
+  --background-modifier-message: #2b3037;
+  --background-modifier-form-field: #0c1117;
+
+  /* interaction: the only place the accent is allowed */
+  --interactive-normal: #1a1f26;
+  --interactive-hover: rgb(250 251 253 / 0.04);
+  --interactive-accent: #5bb6b1;
+  --interactive-accent-hover: #86cdc8;
+  --caret-color: #2f9f99;
+  --text-selection: rgb(47 159 153 / 0.24);
+  --text-highlight-bg: rgb(47 159 153 / 0.14);
+
+  /* text */
+  --text-normal: #eaedef;
+  --text-muted: #aeb2b7;
+  --text-faint: #8d9298;
+  --text-on-accent: #0c1117;
+  --text-on-accent-inverted: #eaedef;
+  --text-accent: #5bb6b1;
+  --text-accent-hover: #86cdc8;
+  --text-error: #fafbfd;
+  --text-warning: #dcdfe3;
+  --text-success: #c8cbd0;
+
+  /* heading level is a depth, so it reads the ordinal ladder monotonically */
+  --h1-color: #fafbfd;
+  --h2-color: #eaedef;
+  --h3-color: #dcdfe3;
+  --h4-color: #c8cbd0;
+  --h5-color: #aeb2b7;
+  --h6-color: #8d9298;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+  --heading-formatting: #5c6168;
+
+  /* callouts: fourteen named types collapse onto four severities, per rule 2.
+     Obsidian wants a bare RGB triplet here, not a colour function. */
+  --callout-error: 250, 251, 253;
+  --callout-bug: 250, 251, 253;
+  --callout-fail: 250, 251, 253;
+  --callout-warning: 220, 223, 227;
+  --callout-important: 220, 223, 227;
+  --callout-success: 200, 203, 208;
+  --callout-tip: 200, 203, 208;
+  --callout-todo: 200, 203, 208;
+  --callout-info: 141, 146, 152;
+  --callout-question: 141, 146, 152;
+  --callout-summary: 141, 146, 152;
+  --callout-example: 174, 178, 183;
+  --callout-quote: 174, 178, 183;
+  --callout-default: 174, 178, 183;
+
+  /* graph: node type is categorical, and the sweep is sequential only,
+     so nodes stay on the ramp. Only the focused node is interaction. */
+  --graph-text: #eaedef;
+  --graph-line: #2b3037;
+  --graph-node: #aeb2b7;
+  --graph-node-unresolved: #5c6168;
+  --graph-node-focused: #5bb6b1;
+  --graph-node-tag: #8d9298;
+  --graph-node-attachment: #5c6168;
+
+  /* code: achromatic, category carried by luminance and slope */
+  --code-background: #0c1117;
+  --code-normal: #eaedef;
+  --code-comment: #72777d;
+  --code-function: #fafbfd;
+  --code-important: #fafbfd;
+  --code-keyword: #fafbfd;
+  --code-operator: #aeb2b7;
+  --code-property: #dcdfe3;
+  --code-punctuation: #8d9298;
+  --code-string: #aeb2b7;
+  --code-tag: #fafbfd;
+  --code-value: #c8cbd0;
+}
+
+/* slope and weight do the work hue is not allowed to do */
+.cm-s-obsidian .cm-comment, .markdown-rendered code .token.comment { font-style: italic; }
+.cm-s-obsidian .cm-keyword, .markdown-rendered code .token.keyword { font-weight: 600; }
+.markdown-rendered code .token.class-name { font-style: italic; }

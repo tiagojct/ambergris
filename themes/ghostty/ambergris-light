@@ -1,0 +1,38 @@
+# Ambergris Light v0.2.0
+# Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.
+# Achromatic ANSI: the six hue slots are a luminance ladder, loudest first.
+# Generated from tokens.json. Do not edit by hand.
+
+background = #fafbfd
+foreground = #1a1f26
+cursor-color = #1e807b
+cursor-text = #fafbfd
+selection-background = #c9e5e5
+selection-foreground = #1a1f26
+search-background = #deeeef
+search-foreground = #1a1f26
+search-selected-background = #c9e5e5
+search-selected-foreground = #1a1f26
+split-divider-color = #dcdfe3
+unfocused-split-fill = #f3f5f7
+
+# The bright hues repeat their normal counterparts, so promoting bold to
+# bright would erase the weight distinction and buy nothing back.
+bold-is-bright = false
+
+palette = 0=#0c1117
+palette = 1=#1a1f26
+palette = 2=#2b3037
+palette = 3=#42484e
+palette = 4=#5c6168
+palette = 5=#72777d
+palette = 6=#8d9298
+palette = 7=#c8cbd0
+palette = 8=#aeb2b7
+palette = 9=#1a1f26
+palette = 10=#2b3037
+palette = 11=#42484e
+palette = 12=#5c6168
+palette = 13=#72777d
+palette = 14=#8d9298
+palette = 15=#dcdfe3

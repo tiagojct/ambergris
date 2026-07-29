@@ -1,0 +1,242 @@
+/* Ambergris v0.2.0 for Logseq
+   Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.
+   - Accent marks interaction only: links, current item, selection, accent rules. Never severity, never decoration.
+   - Status is achromatic. Severity is carried by border weight, edge style and fill density, plus an icon and explicit copy.
+   - The data sweep never appears in interface chrome, and the interface accent never appears in a chart.
+   Generated from tokens.json. Do not edit by hand.
+   Drop into <graph>/logseq/custom.css, or @import it from there. */
+
+html[data-theme=light] {
+  /* surfaces */
+  --ls-primary-background-color: #fafbfd;
+  --ls-secondary-background-color: #f3f5f7;
+  --ls-tertiary-background-color: #eaedef;
+  --ls-quaternary-background-color: #fafbfd;
+  --ls-slide-background-color: #fafbfd;
+  --ls-search-background-color: #fafbfd;
+  --ls-header-button-background: #f3f5f7;
+  --ls-left-sidebar-active-background: rgb(47 159 153 / 0.14);
+  --ls-right-sidebar-code-bg-color: #eaedef;
+  --ls-block-properties-background-color: #eaedef;
+  --ls-page-properties-background-color: #eaedef;
+  --ls-table-tr-even-background-color: #eaedef;
+
+  /* structure */
+  --ls-border-color: #dcdfe3;
+  --ls-secondary-border-color: #c8cbd0;
+  --ls-tertiary-border-color: #dcdfe3;
+  --ls-guideline-color: #dcdfe3;
+  --ls-focus-ring-color: #0c1117;
+
+  /* text */
+  --ls-primary-text-color: #1a1f26;
+  --ls-secondary-text-color: #5c6168;
+  --ls-title-text-color: #1a1f26;
+  --ls-head-text-color: #1a1f26;
+  --ls-icon-color: #5c6168;
+  --ls-search-icon-color: #72777d;
+  --ls-cloze-text-color: #1a1f26;
+
+  /* interaction: the only place the accent is allowed */
+  --ls-active-primary-color: #1e807b;
+  --ls-active-secondary-color: #1b6864;
+  --ls-link-text-color: #1e807b;
+  --ls-link-text-hover-color: #1b6864;
+  --ls-link-ref-text-color: #1e807b;
+  --ls-link-ref-text-hover-color: #1b6864;
+  --ls-block-ref-link-text-color: #1e807b;
+  --ls-tag-text-color: #5c6168;
+  --ls-tag-text-hover-color: #1b6864;
+  --ls-menu-hover-color: rgb(12 17 23 / 0.03);
+  --ls-a-chosen-bg: rgb(47 159 153 / 0.14);
+  --ls-selection-background-color: rgb(47 159 153 / 0.24);
+  --ls-selection-text-color: #1a1f26;
+  --ls-block-highlight-color: rgb(12 17 23 / 0.06);
+
+  /* blocks */
+  --ls-block-bullet-color: #72777d;
+  --ls-block-bullet-border-color: #c8cbd0;
+  --ls-page-checkbox-color: #5c6168;
+  --ls-page-checkbox-border-color: #c8cbd0;
+  --ls-page-blockquote-color: #5c6168;
+  --ls-page-blockquote-bg-color: rgb(12 17 23 / 0.03);
+  --ls-page-blockquote-border-color: #2f9f99;
+  --ls-page-inline-code-color: #42484e;
+  --ls-page-inline-code-bg-color: #eaedef;
+  --ls-page-mark-color: #1a1f26;
+
+  /* scrollbar */
+  --ls-scrollbar-foreground-color: rgb(12 17 23 / 0.16);
+  --ls-scrollbar-background-color: #f3f5f7;
+  --ls-scrollbar-thumb-hover-color: rgb(12 17 23 / 0.28);
+
+  /* status stays achromatic: density, not hue */
+  --ls-error-color: #0c1117;
+  --ls-error-text-color: #0c1117;
+  --ls-error-background-color: rgb(12 17 23 / 0.10);
+  --ls-warning-color: #42484e;
+  --ls-warning-text-color: #42484e;
+  --ls-warning-background-color: rgb(12 17 23 / 0.06);
+  --ls-success-color: #5c6168;
+  --ls-success-text-color: #5c6168;
+  --ls-success-background-color: rgb(12 17 23 / 0.03);
+  --ls-color-file-sync-error: #0c1117;
+  --ls-color-file-sync-pending: #42484e;
+  --ls-color-file-sync-idle: #5c6168;
+  --ls-pie-fg-color: #5c6168;
+  --ls-pie-bg-color: #eaedef;
+
+  /* block highlights: seven named hues collapse onto four densities */
+  --ls-highlight-color-gray: rgb(12 17 23 / 0.03);
+  --ls-highlight-color-blue: rgb(12 17 23 / 0.06);
+  --ls-highlight-color-green: rgb(12 17 23 / 0.06);
+  --ls-highlight-color-yellow: rgb(12 17 23 / 0.10);
+  --ls-highlight-color-purple: rgb(12 17 23 / 0.10);
+  --ls-highlight-color-red: rgb(12 17 23 / 0.06);
+  --ls-highlight-color-pink: rgb(12 17 23 / 0.06);
+}
+
+html[data-theme=dark] {
+  /* surfaces */
+  --ls-primary-background-color: #0c1117;
+  --ls-secondary-background-color: #1a1f26;
+  --ls-tertiary-background-color: #0c1117;
+  --ls-quaternary-background-color: #2b3037;
+  --ls-slide-background-color: #0c1117;
+  --ls-search-background-color: #2b3037;
+  --ls-header-button-background: #1a1f26;
+  --ls-left-sidebar-active-background: rgb(47 159 153 / 0.14);
+  --ls-right-sidebar-code-bg-color: #0c1117;
+  --ls-block-properties-background-color: #0c1117;
+  --ls-page-properties-background-color: #0c1117;
+  --ls-table-tr-even-background-color: #0c1117;
+
+  /* structure */
+  --ls-border-color: #2b3037;
+  --ls-secondary-border-color: #42484e;
+  --ls-tertiary-border-color: #2b3037;
+  --ls-guideline-color: #2b3037;
+  --ls-focus-ring-color: #fafbfd;
+
+  /* text */
+  --ls-primary-text-color: #eaedef;
+  --ls-secondary-text-color: #aeb2b7;
+  --ls-title-text-color: #eaedef;
+  --ls-head-text-color: #eaedef;
+  --ls-icon-color: #aeb2b7;
+  --ls-search-icon-color: #8d9298;
+  --ls-cloze-text-color: #eaedef;
+
+  /* interaction: the only place the accent is allowed */
+  --ls-active-primary-color: #5bb6b1;
+  --ls-active-secondary-color: #86cdc8;
+  --ls-link-text-color: #5bb6b1;
+  --ls-link-text-hover-color: #86cdc8;
+  --ls-link-ref-text-color: #5bb6b1;
+  --ls-link-ref-text-hover-color: #86cdc8;
+  --ls-block-ref-link-text-color: #5bb6b1;
+  --ls-tag-text-color: #aeb2b7;
+  --ls-tag-text-hover-color: #86cdc8;
+  --ls-menu-hover-color: rgb(250 251 253 / 0.04);
+  --ls-a-chosen-bg: rgb(47 159 153 / 0.14);
+  --ls-selection-background-color: rgb(47 159 153 / 0.24);
+  --ls-selection-text-color: #fafbfd;
+  --ls-block-highlight-color: rgb(250 251 253 / 0.08);
+
+  /* blocks */
+  --ls-block-bullet-color: #8d9298;
+  --ls-block-bullet-border-color: #42484e;
+  --ls-page-checkbox-color: #aeb2b7;
+  --ls-page-checkbox-border-color: #42484e;
+  --ls-page-blockquote-color: #aeb2b7;
+  --ls-page-blockquote-bg-color: rgb(250 251 253 / 0.04);
+  --ls-page-blockquote-border-color: #2f9f99;
+  --ls-page-inline-code-color: #c8cbd0;
+  --ls-page-inline-code-bg-color: #0c1117;
+  --ls-page-mark-color: #eaedef;
+
+  /* scrollbar */
+  --ls-scrollbar-foreground-color: rgb(250 251 253 / 0.12);
+  --ls-scrollbar-background-color: #1a1f26;
+  --ls-scrollbar-thumb-hover-color: rgb(250 251 253 / 0.20);
+
+  /* status stays achromatic: density, not hue */
+  --ls-error-color: #fafbfd;
+  --ls-error-text-color: #fafbfd;
+  --ls-error-background-color: rgb(250 251 253 / 0.12);
+  --ls-warning-color: #dcdfe3;
+  --ls-warning-text-color: #dcdfe3;
+  --ls-warning-background-color: rgb(250 251 253 / 0.08);
+  --ls-success-color: #c8cbd0;
+  --ls-success-text-color: #c8cbd0;
+  --ls-success-background-color: rgb(250 251 253 / 0.04);
+  --ls-color-file-sync-error: #fafbfd;
+  --ls-color-file-sync-pending: #dcdfe3;
+  --ls-color-file-sync-idle: #c8cbd0;
+  --ls-pie-fg-color: #aeb2b7;
+  --ls-pie-bg-color: #0c1117;
+
+  /* block highlights: seven named hues collapse onto four densities */
+  --ls-highlight-color-gray: rgb(250 251 253 / 0.04);
+  --ls-highlight-color-blue: rgb(250 251 253 / 0.08);
+  --ls-highlight-color-green: rgb(250 251 253 / 0.08);
+  --ls-highlight-color-yellow: rgb(250 251 253 / 0.12);
+  --ls-highlight-color-purple: rgb(250 251 253 / 0.12);
+  --ls-highlight-color-red: rgb(250 251 253 / 0.08);
+  --ls-highlight-color-pink: rgb(250 251 253 / 0.08);
+}
+
+/* code blocks are CodeMirror 5; slope and weight carry what hue cannot */
+html[data-theme=light] .CodeMirror { color: #1a1f26; background: #eaedef; }
+html[data-theme=light] .CodeMirror .cm-keyword { color: #0c1117; font-weight: 600; }
+html[data-theme=light] .CodeMirror .cm-atom { color: #42484e; }
+html[data-theme=light] .CodeMirror .cm-number { color: #42484e; }
+html[data-theme=light] .CodeMirror .cm-def { color: #0c1117; }
+html[data-theme=light] .CodeMirror .cm-variable { color: #1a1f26; }
+html[data-theme=light] .CodeMirror .cm-variable-2 { color: #2b3037; }
+html[data-theme=light] .CodeMirror .cm-variable-3 { color: #1a1f26; font-style: italic; }
+html[data-theme=light] .CodeMirror .cm-property { color: #2b3037; }
+html[data-theme=light] .CodeMirror .cm-operator { color: #5c6168; }
+html[data-theme=light] .CodeMirror .cm-comment { color: #8d9298; font-style: italic; }
+html[data-theme=light] .CodeMirror .cm-string { color: #5c6168; }
+html[data-theme=light] .CodeMirror .cm-string-2 { color: #2b3037; }
+html[data-theme=light] .CodeMirror .cm-meta { color: #5c6168; }
+html[data-theme=light] .CodeMirror .cm-qualifier { color: #42484e; }
+html[data-theme=light] .CodeMirror .cm-builtin { color: #42484e; }
+html[data-theme=light] .CodeMirror .cm-bracket { color: #72777d; }
+html[data-theme=light] .CodeMirror .cm-tag { color: #0c1117; font-weight: 600; }
+html[data-theme=light] .CodeMirror .cm-attribute { color: #42484e; font-style: italic; }
+html[data-theme=light] .CodeMirror .cm-type { color: #1a1f26; font-style: italic; }
+html[data-theme=light] .CodeMirror .cm-punctuation { color: #72777d; }
+html[data-theme=light] .CodeMirror .cm-link { color: #1b6864; }
+html[data-theme=light] .CodeMirror .cm-error { color: #0c1117; font-weight: 600; }
+html[data-theme=light] .CodeMirror .CodeMirror-cursor { border-left-color: #1e807b; }
+html[data-theme=light] .CodeMirror .CodeMirror-selected { background: rgb(47 159 153 / 0.24); }
+html[data-theme=light] .CodeMirror .CodeMirror-linenumber { color: #aeb2b7; }
+
+html[data-theme=dark] .CodeMirror { color: #eaedef; background: #0c1117; }
+html[data-theme=dark] .CodeMirror .cm-keyword { color: #fafbfd; font-weight: 600; }
+html[data-theme=dark] .CodeMirror .cm-atom { color: #c8cbd0; }
+html[data-theme=dark] .CodeMirror .cm-number { color: #c8cbd0; }
+html[data-theme=dark] .CodeMirror .cm-def { color: #fafbfd; }
+html[data-theme=dark] .CodeMirror .cm-variable { color: #eaedef; }
+html[data-theme=dark] .CodeMirror .cm-variable-2 { color: #dcdfe3; }
+html[data-theme=dark] .CodeMirror .cm-variable-3 { color: #eaedef; font-style: italic; }
+html[data-theme=dark] .CodeMirror .cm-property { color: #dcdfe3; }
+html[data-theme=dark] .CodeMirror .cm-operator { color: #aeb2b7; }
+html[data-theme=dark] .CodeMirror .cm-comment { color: #72777d; font-style: italic; }
+html[data-theme=dark] .CodeMirror .cm-string { color: #aeb2b7; }
+html[data-theme=dark] .CodeMirror .cm-string-2 { color: #dcdfe3; }
+html[data-theme=dark] .CodeMirror .cm-meta { color: #aeb2b7; }
+html[data-theme=dark] .CodeMirror .cm-qualifier { color: #c8cbd0; }
+html[data-theme=dark] .CodeMirror .cm-builtin { color: #c8cbd0; }
+html[data-theme=dark] .CodeMirror .cm-bracket { color: #8d9298; }
+html[data-theme=dark] .CodeMirror .cm-tag { color: #fafbfd; font-weight: 600; }
+html[data-theme=dark] .CodeMirror .cm-attribute { color: #c8cbd0; font-style: italic; }
+html[data-theme=dark] .CodeMirror .cm-type { color: #eaedef; font-style: italic; }
+html[data-theme=dark] .CodeMirror .cm-punctuation { color: #8d9298; }
+html[data-theme=dark] .CodeMirror .cm-link { color: #2f9f99; }
+html[data-theme=dark] .CodeMirror .cm-error { color: #fafbfd; font-weight: 600; }
+html[data-theme=dark] .CodeMirror .CodeMirror-cursor { border-left-color: #2f9f99; }
+html[data-theme=dark] .CodeMirror .CodeMirror-selected { background: rgb(47 159 153 / 0.24); }
+html[data-theme=dark] .CodeMirror .CodeMirror-linenumber { color: #5c6168; }

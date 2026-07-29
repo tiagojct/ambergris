@@ -1,0 +1,27 @@
+{
+  "name": "ambergris",
+  "displayName": "Ambergris",
+  "description": "Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.",
+  "version": "0.2.0",
+  "publisher": "ambergris",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Ambergris Light",
+        "uiTheme": "vs",
+        "path": "./themes/ambergris-light-color-theme.json"
+      },
+      {
+        "label": "Ambergris Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ambergris-dark-color-theme.json"
+      }
+    ]
+  }
+}

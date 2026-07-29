@@ -1,0 +1,58 @@
+{
+  "manifest_version": 2,
+  "name": "Ambergris Dark",
+  "version": "0.2.0",
+  "description": "Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.",
+  "author": "Ambergris",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ambergris-dark@ambergris.theme",
+      "strict_min_version": "115.0"
+    }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#0c1117",
+      "frame_inactive": "#0c1117",
+      "toolbar": "#1a1f26",
+      "tab_selected": "#1a1f26",
+      "tab_text": "#eaedef",
+      "tab_background_text": "#aeb2b7",
+      "tab_background_separator": "#2b3037",
+      "tab_line": "#5bb6b1",
+      "toolbar_text": "#eaedef",
+      "bookmark_text": "#eaedef",
+      "toolbar_top_separator": "#2b3037",
+      "toolbar_bottom_separator": "#2b3037",
+      "toolbar_vertical_separator": "#2b3037",
+      "toolbar_field_separator": "#2b3037",
+      "toolbar_field": "#0c1117",
+      "toolbar_field_text": "#eaedef",
+      "toolbar_field_border": "#42484e",
+      "toolbar_field_focus": "#0c1117",
+      "toolbar_field_text_focus": "#eaedef",
+      "toolbar_field_border_focus": "#fafbfd",
+      "toolbar_field_highlight": "#143336",
+      "toolbar_field_highlight_text": "#fafbfd",
+      "popup": "#2b3037",
+      "popup_text": "#eaedef",
+      "popup_border": "#42484e",
+      "popup_highlight": "#2c4045",
+      "popup_highlight_text": "#eaedef",
+      "sidebar": "#1a1f26",
+      "sidebar_text": "#eaedef",
+      "sidebar_border": "#2b3037",
+      "sidebar_highlight": "#5bb6b1",
+      "sidebar_highlight_text": "#0c1117",
+      "icons": "#aeb2b7",
+      "icons_attention": "#5bb6b1",
+      "button_background_hover": "#23282f",
+      "button_background_active": "#2c3137",
+      "sidebar_highlight_border": "#2f9f99"
+    },
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "auto"
+    }
+  }
+}
