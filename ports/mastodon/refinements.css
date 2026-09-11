@@ -1,0 +1,74 @@
+/*  Ambergris refinement layer. Appended after the recoloured Tangerine Neue
+    base by build.mjs, which resolves the at-brace token aliases used below
+    against tokens.json. Equal-specificity rules here win over the base by
+    source order. */
+
+/* Surfaces the variant slots cannot reach. */
+:root {
+  --color-fg: @{color.grey.950};
+  --color-content-bg: @{color.grey.000};
+  --color-content-fg: @{color.grey.950};
+  --color-content-fg-bold: @{color.grey.1000};
+  --color-lines: @{color.grey.200};
+  --color-lines-translucent: @{color.alpha.ink.16};
+}
+
+:root[data-color-scheme="dark"],
+:root:not([data-color-scheme]) {
+  --color-bg: @{color.grey.1000};
+  --color-content-bg: @{color.grey.950};
+  --color-content-secondary-bg: @{color.grey.900};
+  --color-content-fg-muted: @{color.grey.400};
+  --color-lines: @{color.grey.800};
+  --color-lines-translucent: @{color.alpha.paper.12};
+  /* status hues: the muted functional set, never the loud defaults */
+  --color-confirm: @{ansi.green};
+  --color-confirm-bg: color-mix(in srgb, @{ansi.green} 24%, transparent);
+  --color-confirm-fg: @{ansi.bright-green};
+  --color-reject: @{ansi.red};
+  --color-reject-bg: color-mix(in srgb, @{ansi.red} 24%, transparent);
+  --color-warning: @{ansi.yellow};
+  --color-warning-bg: color-mix(in srgb, @{ansi.yellow} 24%, transparent);
+}
+
+/* Mastodon 4.6 token layer, dark: severity carried by the functional hues;
+   severity fills stay light with dark text on them. */
+:root:root[data-color-scheme="dark"],
+:root:root:not([data-color-scheme]) {
+  --color-text-error: @{ansi.bright-red};
+  --color-text-on-error-base: @{color.grey.1000};
+  --color-bg-error-base: @{ansi.red};
+  --color-bg-error-base-hover: @{ansi.bright-red};
+  --color-text-warning: @{ansi.bright-yellow};
+  --color-text-on-warning-base: @{color.grey.1000};
+  --color-bg-warning-base: @{ansi.yellow};
+  --color-text-success: @{ansi.bright-green};
+  --color-text-on-success-base: @{color.grey.1000};
+  --color-bg-success-base: @{ansi.green};
+}
+
+/* Engagement states are interaction: teal, never gold or green. */
+:root:root {
+  --color-text-favourite-highlight: var(--color-accent);
+  --color-text-bookmark-highlight: var(--color-accent);
+}
+.icon-button.active { color: var(--color-accent); }
+
+/* Polls are data: quiet bars, the accent only marks the leading option. */
+.poll__chart { background: var(--color-secondary-separator); }
+.poll__chart.leading { background-color: var(--color-accent); }
+
+/* Selection is interaction. */
+::selection {
+  background: color-mix(in srgb, @{color.accent.500} 24%, transparent);
+  color: @{color.grey.950};
+}
+:root[data-color-scheme="dark"] ::selection,
+:root:not([data-color-scheme]) ::selection { color: @{color.grey.000}; }
+
+/* Focus marks where the keyboard is: achromatic, on every surface. */
+:where(a, button, [role="button"], [role="tab"], [role="menuitem"], input,
+       select, textarea, summary, .focusable):focus-visible {
+  outline: @{focus.width} solid var(--color-content-fg-bold) !important;
+  outline-offset: @{focus.offset};
+}

@@ -1,0 +1,24 @@
+# Ambergris Dark for Ghostty
+# Generated from tokens.json (Ambergris v0.3.0). Do not edit by hand.
+palette = 0=#1A1F26
+palette = 1=#CF7F79
+palette = 2=#7BB587
+palette = 3=#D4BC79
+palette = 4=#72A5DE
+palette = 5=#B893D4
+palette = 6=#5BB6B1
+palette = 7=#C8CBD0
+palette = 8=#5C6168
+palette = 9=#E7958E
+palette = 10=#91CB9C
+palette = 11=#E8CF8C
+palette = 12=#88BCF6
+palette = 13=#CEA9EB
+palette = 14=#86CDC8
+palette = 15=#FAFBFD
+background = #0C1117
+foreground = #EAEDEF
+cursor-color = #FAFBFD
+cursor-text = #0C1117
+selection-background = #143336
+selection-foreground = #FAFBFD

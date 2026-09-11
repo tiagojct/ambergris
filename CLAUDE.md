@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Ambergris is a design token system: a near-monochrome cool grey ramp, one teal accent restricted to interactive state, and a five-stop hue sweep reserved for data visualisation. It ships as a single generated CSS file plus a self-contained HTML specimen.
+Ambergris is a design token system: a near-monochrome cool grey ramp, one teal accent restricted to interactive state, and a five-stop hue sweep reserved for data visualisation. It ships as a single generated CSS file plus a self-contained HTML specimen, and dark-only ports for Ghostty, Zed, Firefox and Mastodon under `ports/`.
 
 ## Commands
 
@@ -25,23 +25,30 @@ The build is deterministic. Running it on a clean tree must leave the tree clean
 | [specimen.src.html](specimen.src.html) | Specimen template. Hand-written. |
 | [ambergris.css](ambergris.css) | **Generated.** Do not hand-edit. |
 | [specimen.html](specimen.html) | **Generated.** Do not hand-edit. |
+| [ports/mastodon/tangerine-template.css](ports/mastodon/tangerine-template.css) | Vendored from Tangerine Neue (MIT, pinned commit in its header; 7 placeholder boundaries normalized locally). |
+| [ports/mastodon/tangerine-granite.values.json](ports/mastodon/tangerine-granite.values.json) | Vendored: upstream granite variant values, the baseline the emitter overrides. |
+| [ports/mastodon/refinements.css](ports/mastodon/refinements.css) | Hand-written. May use `@{token.path}` aliases, resolved at build. |
+| [ports/README.md](ports/README.md) | Hand-written install docs. |
+| `ports/ghostty/ambergris-dark`, `ports/zed/ambergris.json`, `ports/firefox/manifest.json`, `ports/mastodon/AmbergrisUI.css` | **Generated.** Do not hand-edit. |
 
 `specimen.src.html` carries two placeholders that the build substitutes: `/* @TOKENS@ */` inside the first `<style>` (receives the whole emitted CSS) and `/* @DATA@ */` inside `<script id="ramp-data" type="application/json">` (receives a JSON blob of ramps, the 13x13 contrast matrix, and the data sweeps). Everything visible in the specimen is drawn client-side from that blob, so specimen sections stay in sync with the ramp automatically.
 
-## The three design rules
+## The four design rules
 
 Encoded in `meta.rules` and printed into the CSS header. Changes that violate them are the kind of change to raise before making:
 
 1. Accent marks interaction only: links, current item, selection, accent rules. Never severity, never decoration.
 2. Status is achromatic. Severity is carried by border weight, edge style and fill density, plus an icon and explicit copy.
 3. The data sweep never appears in interface chrome, and the interface accent never appears in a chart.
+4. Functional hues (`ansi.*`) exist for terminal and editor content only: ANSI slots, diffs, diagnostics. Never interface chrome, and never `ambergris.css`.
 
 ## Build pipeline
 
 1. **Alias resolution.** Any string value may contain `{dot.path.to.token}` references, resolved recursively against the parsed `tokens.json` (cycle guard at depth 12). If the target is an object with a `hex` field, the hex is substituted. Unknown paths and non-scalar targets throw.
 2. **Contrast gate.** Every entry in `contrast.assert` is checked with WCAG relative luminance against its `min`. Results print one line each. **Any failure exits 1 before a single file is written**, so a ramp edit that breaks a legibility floor cannot silently ship.
 3. **CSS emission.** Groups are emitted by explicit hand-written loops, not by a generic tree walk (see gotchas).
-4. **Specimen emission.** Reads the CSS it just wrote, inlines it plus the data blob into the template.
+4. **Ports emission.** Dark-only exports built from the same parsed tokens: `ports/ghostty/ambergris-dark` (terminal theme), `ports/zed/ambergris.json` (editor theme family), `ports/firefox/manifest.json` (static browser theme), `ports/mastodon/AmbergrisUI.css` (vendored Tangerine Neue template + granite baseline values, recoloured slot by slot, with `refinements.css` resolved and appended; throws if any `{{slot}}` survives substitution).
+5. **Specimen emission.** Reads the CSS it just wrote, inlines it plus the data blob into the template.
 
 ## Emitted CSS layering
 
@@ -64,6 +71,8 @@ Variable prefix (`am`) comes from `meta.prefix`; the output filename comes from 
 - **A new token group needs a new emit loop in `build.mjs`.** The alpha groups (`ink`, `paper`, `accent`) and data sets (`sequence-on-light`, `sequence-on-dark`) are hardcoded lists in the emitter.
 - **Not everything in `tokens.json` reaches the CSS.** `status.*.icon`, `data.supplied` and `data.hue-path` are metadata: the icon names are guidance for implementers, the other two feed only the specimen.
 - **Adding a colour usually means adding a `contrast.assert` entry** for the role it is meant to play. The assertion list is the system's regression suite.
+- **`ansi.*` is port-only.** Hex + oklch hand-synced like every colour (aliases like `cyan: {color.accent.400}` excepted), tuned for dark grounds, asserted at 4.5:1 against grey-1000, and never emitted into `ambergris.css`. The 16-slot order lives in the `ANSI16` list in `build.mjs`.
+- **The Mastodon port's odd slot names** (`color-bg_23`, `icon-home-accent-active_302`) come from upstream's extractor and must match `tangerine-template.css` exactly. Icon slots are assigned by rule in the emitter: `-active`/checked → accent, base → achromatic; slot number ≥ 464 (plus `_250`) means the dark-mode data-URI. Composite SVG slots (`logo_*`, `icon-olympics_*`) are recoloured from the granite baseline by hex swap.
 
 ## Data sweep semantics
 

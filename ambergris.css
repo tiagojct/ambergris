@@ -1,8 +1,9 @@
-/* Ambergris v0.2.0
+/* Ambergris v0.3.0
    Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning.
    - Accent marks interaction only: links, current item, selection, accent rules. Never severity, never decoration.
    - Status is achromatic. Severity is carried by border weight, edge style and fill density, plus an icon and explicit copy.
    - The data sweep never appears in interface chrome, and the interface accent never appears in a chart.
+   - Functional hues exist for terminal and editor content only: ANSI slots, diffs, diagnostics. Never interface chrome.
    Generated from tokens.json. Do not edit by hand. */
 
 :root {

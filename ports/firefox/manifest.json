@@ -1,0 +1,56 @@
+{
+  "manifest_version": 2,
+  "name": "Ambergris Dark",
+  "version": "0.3.0",
+  "description": "Near-monochrome system on a cool grey ramp. One teal accent, restricted to interactive state. A five-stop hue sweep reserved for data, never for interface meaning. Generated from tokens.json (Ambergris v0.3.0). Do not edit by hand.",
+  "author": "Tiago Jacinto",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ambergris@tiagojct.eu"
+    }
+  },
+  "theme": {
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "dark"
+    },
+    "colors": {
+      "frame": "#0C1117",
+      "frame_inactive": "#0C1117",
+      "toolbar": "#1A1F26",
+      "toolbar_text": "#EAEDEF",
+      "bookmark_text": "#EAEDEF",
+      "tab_selected": "#1A1F26",
+      "tab_text": "#EAEDEF",
+      "tab_background_text": "#AEB2B7",
+      "tab_line": "#2F9F99",
+      "toolbar_field": "#0C1117",
+      "toolbar_field_text": "#EAEDEF",
+      "toolbar_field_border": "#2B3037",
+      "toolbar_field_focus": "#1A1F26",
+      "toolbar_field_text_focus": "#FAFBFD",
+      "toolbar_field_border_focus": "#FAFBFD",
+      "toolbar_field_highlight": "rgba(47, 159, 153, 0.24)",
+      "toolbar_field_highlight_text": "#FAFBFD",
+      "toolbar_top_separator": "#0C1117",
+      "toolbar_bottom_separator": "#2B3037",
+      "toolbar_vertical_separator": "#2B3037",
+      "icons": "#AEB2B7",
+      "icons_attention": "#5BB6B1",
+      "button_background_hover": "rgba(250, 251, 253, 0.06)",
+      "button_background_active": "rgba(250, 251, 253, 0.1)",
+      "popup": "#2B3037",
+      "popup_text": "#EAEDEF",
+      "popup_border": "#42484E",
+      "popup_highlight": "rgba(47, 159, 153, 0.24)",
+      "popup_highlight_text": "#FAFBFD",
+      "sidebar": "#1A1F26",
+      "sidebar_text": "#EAEDEF",
+      "sidebar_border": "#2B3037",
+      "sidebar_highlight": "rgba(47, 159, 153, 0.24)",
+      "sidebar_highlight_text": "#FAFBFD",
+      "ntp_background": "#0C1117",
+      "ntp_text": "#EAEDEF"
+    }
+  }
+}
